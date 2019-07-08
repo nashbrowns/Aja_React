@@ -1,0 +1,14 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=KoHo:200,300,400,500,600,700|Montserrat:100,300,400,900");
+
+body {
+  background-image: url(./assets/images/bgimage-01.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 0.9em;
+  letter-spacing: 0.01em;
+}

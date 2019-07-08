@@ -1,0 +1,27 @@
+.nav {
+  border-color: #2da6a0;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 0.8em;
+  letter-spacing: 0.04em;
+  padding: 4px;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.nav a {
+  color: #2da6a0;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.nav:hover {
+  background-color: #2da6a0;
+  border: 0px;
+}
