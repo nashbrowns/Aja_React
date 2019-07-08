@@ -26,9 +26,8 @@ io.on('connection', (client) => {
     console.log('user disconnected');
   });
 
-  client.on('chat message', function(msg){
-    console.log(msg);
-    io.emit('chat message', msg);
+  client.on('device', function(number){
+    io.emit('device', number);
   });
 
 });
