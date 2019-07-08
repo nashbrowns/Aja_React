@@ -14,6 +14,15 @@ socket.on('device', function(number){
     console.log(number);
 });
 
+socket.on('light', function(lightState){
+    if(lightState === '0'){
+        console.log('light off');
+    }
+    else if(lightState === '1'){
+        console.log('light on');
+    }
+})
+
 class Home extends Component {
 
     render (){

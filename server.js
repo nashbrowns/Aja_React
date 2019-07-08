@@ -26,8 +26,8 @@ io.on('connection', (client) => {
     console.log('user disconnected');
   });
 
-  client.on('device', function(number){
-    io.emit('device', number);
+  client.on('device', function(MAC){
+    io.emit('device', MAC);
   });
 
 });
