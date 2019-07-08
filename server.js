@@ -30,6 +30,10 @@ io.on('connection', (client) => {
     io.emit('device', MAC);
   });
 
+  client.on('light', function(lightState){
+    io.emit('light', lightState);
+  })
+
 });
 
 //Passport Strategy
