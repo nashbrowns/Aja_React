@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=KoHo:200,300,400,500,600,700|Montserrat:100,300,400,900");
+
+.card{
+    width: 18rem;
+}
+
+.card-header {
+    color: #2da6a0;
+    text-transform: uppercase;
+    font-family: Koho;
+    font-weight: 600;
+    font-size: 1.2em;
+    letter-spacing: 0.02em;
+}
+
+.piContainer {
+    background-color: rgba(126, 255, 255, 0.5);
+    padding: 20px;
+}
