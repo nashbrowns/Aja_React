@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-//const routes = require("./routes");
-//const passport = require("passport");
 const http = require('http');
+
+const db = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -36,20 +36,37 @@ io.on('connection', (client) => {
 
 });
 
-//Passport Strategy
-// require("./client/src/Passport/passport")(passport);
-// app.use(passport.initialize());
-// app.use(passport.session());
-// const authRoutes = require("./routes/auth");
-// app.use("/auth", authRoutes);
-// // //Declare Global Variables
-// app.use((req, resp, next) => {
-//   resp.locals.user = req.user || null;
-//   next();
-// });
-
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aja",{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aja",{ useNewUrlParser: true });
+
+db.User.create({ 
+  firstName: "Nash",
+  lastName: "McDonald",
+  email: "nash@email.com",
+  password: "1234"})
+  .then(function(dbUser) {
+
+    console.log(dbUser);
+
+    db.Device.create({
+      MAC: "1234"
+    }).then(function(dbDevice){
+  
+      console.log(dbDevice);
+      return db.User.findOneAndUpdate({}, { $push: { deviceList: dbDevice._id } }, { new: true });
+    })
+    .then(function(dbUser) {
+      // If the User was updated successfully, send it back to the client
+      console.log(dbUser);
+    })
+    .catch(function(err) {
+      console.log(err.message);
+    });
+
+  })
+  .catch(function(err) {
+    console.log(err.message);
+  });
 
 // Start the API server
 server.listen(PORT, function() {

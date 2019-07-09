@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+
+/* Components */
+import RegForm from "../../components/RegForm";
+
+/* Styling */
 import './style.css';
 
 class Signup extends Component {
@@ -6,7 +11,7 @@ class Signup extends Component {
     render (){
         return (
             <div>
-                <h1>Signup</h1>
+                <RegForm />
             </div>
         );
     }
