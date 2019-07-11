@@ -36,7 +36,6 @@ class Login extends Component {
             .then( (res) => {
                 console.log(res.data);
                 if(res.data !== null){
-                    alert(res.data.firstName);
 
                     this.props.logUserIn(
                         {
@@ -44,7 +43,7 @@ class Login extends Component {
                         firstName: res.data.firstName,
                         lastName: res.data.lastName
                         }
-                    ); 
+                    );
 
                 } else{
                     alert("Incorrect Username or password");

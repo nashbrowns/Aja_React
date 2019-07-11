@@ -34,16 +34,12 @@ class App extends Component {
 
   logUserIn = (userData)=>{
 
-    console.log(userData);
-
     this.setState({
       email: userData.email,
       firstName: userData.firstName,
       lastName: userData.lastName,
       isAuth: 1
     });
-
-    console.log(this.state);
 
   }
 
@@ -57,7 +53,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" render={(props) => <Login {...props} logUserIn={this.logUserIn} />}/>
-            <Route exact path="/dashboard" component={Dashboard} />
+            {this.state.isAuth ? <Route exact path="/dashboard" render={(props) => <Dashboard {...props} />}  /> : <Route exact path="/" component={Home}  />}
             <Route exact path="/about" component={About} />
           </Switch>
         </>
