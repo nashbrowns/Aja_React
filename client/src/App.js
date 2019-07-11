@@ -23,6 +23,15 @@ class App extends Component {
     isAuth: 0
   };
 
+  logUserOut = ()=>{
+    this.setState({
+      email: "",
+      firstName: "",
+      lastName: "",
+      isAuth: 0
+    });
+  }
+
   logUserIn = (userData)=>{
 
     console.log(userData);
@@ -42,7 +51,8 @@ class App extends Component {
     return (
       <Router>
         <>
-          <Navbar email={this.state.email} firstName={this.state.firstName} lastName={this.state.lastName} isAuth={this.state.isAuth} />
+          <Navbar email={this.state.email} firstName={this.state.firstName} lastName={this.state.lastName} isAuth={this.state.isAuth}
+                  logUserOut={this.logUserOut} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />

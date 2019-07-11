@@ -12,8 +12,12 @@ function LoggedIn(props){
     );
 }
 
+
 class Navbar extends Component {
 
+    logUserOut = ()=>{
+        this.props.logUserOut();
+    }
 
     render() {
 
@@ -36,16 +40,35 @@ class Navbar extends Component {
                                         Signup
                                     </Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link to="/login" className="nav-link">
-                                        Login
-                                    </Link>
-                                </li>
+
                                 <li className="nav-item">
                                     <Link to="/about" className="nav-link">
                                         About
                                     </Link>
                                 </li>
+
+                                { this.props.isAuth ?
+                                    <li className="nav-item">
+                                        <Link to="/dashboard" className="nav-link">
+                                            Dashboard
+                                        </Link>
+                                    </li> :
+                                    null
+                                }
+                                
+                                { !this.props.isAuth ?
+                                    <li className="nav-item">
+                                        <Link to="/login" className="nav-link">
+                                            Login
+                                        </Link>
+                                    </li> :
+                                    <li className="nav-item" onClick={this.logUserOut}>
+                                        <Link to="/" className="nav-link">
+                                            Logout
+                                        </Link>
+                                    </li>
+                                }
+                                
                             </ul>
                         </div>
                         {this.props.isAuth ? <LoggedIn email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName} /> : null}
