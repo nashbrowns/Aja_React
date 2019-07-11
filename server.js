@@ -1,7 +1,13 @@
+/* npm modules */
 const express = require("express");
+
 const mongoose = require("mongoose");
 const http = require('http');
 
+/* route import */
+const routes = require("./routes");
+
+/* database model import */
 const db = require('./models');
 
 const app = express();
@@ -10,6 +16,7 @@ const PORT = process.env.PORT || 3001;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -39,34 +46,12 @@ io.on('connection', (client) => {
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aja",{ useNewUrlParser: true });
 
-db.User.create({ 
-  firstName: "Nash",
-  lastName: "McDonald",
-  email: "nash@email.com",
-  password: "1234"})
-  .then(function(dbUser) {
+// Add routes, both API and view
+app.use(routes);
 
-    console.log(dbUser);
-
-    db.Device.create({
-      MAC: "1234"
-    }).then(function(dbDevice){
-  
-      console.log(dbDevice);
-      return db.User.findOneAndUpdate({}, { $push: { deviceList: dbDevice._id } }, { new: true });
-    })
-    .then(function(dbUser) {
-      // If the User was updated successfully, send it back to the client
-      console.log(dbUser);
-    })
-    .catch(function(err) {
-      console.log(err.message);
-    });
-
-  })
-  .catch(function(err) {
-    console.log(err.message);
-  });
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 // Start the API server
 server.listen(PORT, function() {
