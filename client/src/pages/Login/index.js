@@ -28,7 +28,6 @@ class Login extends Component {
     
       handleSubmit(event) {
 
-        event.preventDefault();
 
         API.loginUser({
             email: this.state.email,
@@ -38,6 +37,7 @@ class Login extends Component {
                 console.log(res.data);
                 if(res.data !== null){
                     alert(res.data.firstName);
+                    
                 } else{
                     alert("Incorrect Username or password");
                 }

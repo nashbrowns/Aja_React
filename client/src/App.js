@@ -14,8 +14,8 @@ import "./App.css";
 
 class App extends Component {
 
-
   render(){
+
     return (
       <Router>
         <>
@@ -23,7 +23,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/login" parentData={"test"} component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/about" component={About} />
           </Switch>
