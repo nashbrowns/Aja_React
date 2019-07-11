@@ -17,5 +17,9 @@ export default {
   saveUser: function(userData) {
     console.log("saving user");
     return axios.post(process.env.REACT_APP_API_URL+"/api/user", userData);
+  },
+  loginUser: function(userData) {
+    console.log(userData);
+    return axios.post(process.env.REACT_APP_API_URL+"/api/user/login", userData);
   }
 };
