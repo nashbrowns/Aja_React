@@ -52,7 +52,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" render={(props) => <Login {...props} logUserIn={this.logUserIn} />}/>
+            <Route exact path="/login" render={(props) => <Login {...props} logUserIn={this.logUserIn} isAuth={this.state.isAuth} />}/>
             {this.state.isAuth ? <Route exact path="/dashboard" render={(props) => <Dashboard {...props} />}  /> : <Route exact path="/" component={Home}  />}
             <Route exact path="/about" component={About} />
           </Switch>

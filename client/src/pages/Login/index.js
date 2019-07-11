@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import API from "../../utils/API";
 
@@ -55,7 +55,6 @@ class Login extends Component {
 
     render() {
 
-
         return (
             <div>
                 <div className="container">
@@ -67,21 +66,30 @@ class Login extends Component {
                         </div>
                     </div>
 
-                    <div className="row mt-2">
-                        <div className="col-sm-12 mx-auto">
-                            <form className="space text-center" id="signup" name="signup">
-                                <div className="form-group">
-                                    <input className="text" name="email" type="email" placeholder="Email Address"
-                                        onChange={this.handleChange} value={this.state.email} />
-                                </div>
-                                <div className="form-group">
-                                    <input name="password" type="password" placeholder="Password"
-                                        onChange={this.handleChange} value={this.state.password} />
-                                </div>
-                                <input className="btn button" type="submit" value="Login" onClick={this.handleSubmit} />
-                            </form>
-                        </div>
-                    </div>
+                    
+                        <div className="row mt-2">
+                            <div className="col-sm-12 mx-auto">
+                                { !this.props.isAuth ?
+                                    <form className="space text-center" id="signup" name="signup">
+                                        <div className="form-group">
+                                            <input className="text" name="email" type="email" placeholder="Email Address"
+                                                onChange={this.handleChange} value={this.state.email} />
+                                        </div>
+                                        <div className="form-group">
+                                            <input name="password" type="password" placeholder="Password"
+                                                onChange={this.handleChange} value={this.state.password} />
+                                        </div>
+                                        <input className="btn button" type="submit" value="Login" onClick={this.handleSubmit} />
+                                    </form>
+                                    :
+                                    <form className="space text-center">
+                                        <Link to="/dashboard" className="nav-link">
+                                            <input className="btn button" type="submit" value="Dashboard" />
+                                        </Link>
+                                    </form>
+                                }
+                            </div>
+                        </div> 
 
                 </div>
             </div>
