@@ -4,7 +4,16 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import Ajalogo from "../../assets/images/aja-logo@2x.png";
 
+function LoggedIn(props){
+    return (
+        <form className="form-inline navbar-nav">
+            <li className="nav-item">{props.firstName}</li>
+        </form>
+    );
+}
+
 class Navbar extends Component {
+
 
     render() {
 
@@ -39,6 +48,7 @@ class Navbar extends Component {
                                 </li>
                             </ul>
                         </div>
+                        {this.props.isAuth ? <LoggedIn email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName} /> : null}
                 </nav>
             
                 );

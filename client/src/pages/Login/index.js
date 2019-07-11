@@ -37,7 +37,15 @@ class Login extends Component {
                 console.log(res.data);
                 if(res.data !== null){
                     alert(res.data.firstName);
-                    
+
+                    this.props.logUserIn(
+                        {
+                        email: res.data.email,
+                        firstName: res.data.firstName,
+                        lastName: res.data.lastName
+                        }
+                    ); 
+
                 } else{
                     alert("Incorrect Username or password");
                 }
@@ -47,6 +55,8 @@ class Login extends Component {
       }
 
     render() {
+
+
         return (
             <div>
                 <div className="container">
