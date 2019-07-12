@@ -17,6 +17,7 @@ import "./App.css";
 class App extends Component {
 
   state = {
+    userID: "",
     email: "",
     firstName: "",
     lastName: "",
@@ -25,6 +26,7 @@ class App extends Component {
 
   logUserOut = ()=>{
     this.setState({
+      userID: "",
       email: "",
       firstName: "",
       lastName: "",
@@ -35,6 +37,7 @@ class App extends Component {
   logUserIn = (userData)=>{
 
     this.setState({
+      userID: userData._id,
       email: userData.email,
       firstName: userData.firstName,
       lastName: userData.lastName,
@@ -53,7 +56,12 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" render={(props) => <Login {...props} logUserIn={this.logUserIn} isAuth={this.state.isAuth} />}/>
-            {this.state.isAuth ? <Route exact path="/dashboard" render={(props) => <Dashboard {...props} />}  /> : <Route exact path="/" component={Home}  />}
+            {
+            this.state.isAuth ? 
+              <Route exact path="/dashboard" render={(props) => <Dashboard {...props} userID={this.state.userID} email={this.state.email} firstName={this.state.firstName} lastName={this.state.lastName} />}  /> 
+              : 
+              <Route exact path="/" component={Home}  />
+            }
             <Route exact path="/about" component={About} />
           </Switch>
         </>

@@ -1,0 +1,19 @@
+.logo {
+    max-width: 70%;
+    height: 60px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    width: auto;
+}
+
+.button {
+    color: #2da6a0;
+    box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+    background-color: #fff;
+    border-color: #2da6a0;
+    text-transform: uppercase;
+    font-family: Koho;
+    font-weight: 600;
+    font-size: 1em;
+    letter-spacing: 0.02em;
+}

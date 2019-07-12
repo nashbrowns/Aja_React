@@ -21,5 +21,9 @@ export default {
   loginUser: function(userData) {
     console.log(userData);
     return axios.post(process.env.REACT_APP_API_URL+"/api/user/login", userData);
+  },
+  saveDevice: function(userData) {
+    console.log(userData);
+    return axios.post(process.env.REACT_APP_API_URL+"/api/device", userData);
   }
 };

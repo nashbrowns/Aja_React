@@ -39,9 +39,10 @@ class Login extends Component {
 
                     this.props.logUserIn(
                         {
-                        email: res.data.email,
-                        firstName: res.data.firstName,
-                        lastName: res.data.lastName
+                            userID: res.data._id,
+                            email: res.data.email,
+                            firstName: res.data.firstName,
+                            lastName: res.data.lastName
                         }
                     );
 
