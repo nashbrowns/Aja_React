@@ -38,9 +38,22 @@ class RegForm extends Component {
             email: this.state.email,
             password: this.state.password
           })
-            .then((res) => {console.log(res)})
+            .then((res) => {
+
+                console.log(res);
+
+                if(res.status === 200){
+                    alert("registration successful");
+                }
+            })
             .catch(err => console.log(err));
-        
+
+        this.setState({
+            email: '',
+            firstName: '',
+            lastName: '',
+            password: ''
+        });
 
       }
 

@@ -20,7 +20,12 @@ module.exports = {
     console.log(req.body);
 
     db.Device
-      .create({MAC: req.body.MAC})
+      .create(
+        {
+        MAC: req.body.MAC,
+        name: req.body.name
+        }
+      )
       .then( (dbModel) => {
         
         console.log(dbModel._id);

@@ -37,7 +37,7 @@ class App extends Component {
   logUserIn = (userData)=>{
 
     this.setState({
-      userID: userData._id,
+      userID: userData.userID,
       email: userData.email,
       firstName: userData.firstName,
       lastName: userData.lastName,

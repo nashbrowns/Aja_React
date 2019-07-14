@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { Link } from "react-router-dom";
 
 import API from "../../utils/API";
 
@@ -12,7 +11,8 @@ class RegDevice extends Component {
         super(props);
         this.state = {
             deviceList: [],
-            deviceID: ''
+            deviceID: '',
+            name: ''
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -31,13 +31,22 @@ class RegDevice extends Component {
         event.preventDefault();
 
         API.saveDevice({
+            name: this.state.name,
             MAC: this.state.deviceID,
             email: this.props.email
           })
-          .then((res) => {console.log(res)})
+          .then((res) => {
+              console.log(res)
+              if(res.status === 200){
+                  alert("device registered");
+              }
+            })
           .catch(err => console.log(err));
         
-
+        this.setState({
+            deviceID: '',
+            name: ''
+        });
       }
 
     render ()
@@ -59,6 +68,10 @@ class RegDevice extends Component {
                             <div className="form-group">
                                 <input className="text" name="deviceID" type="name" placeholder="00:a0:c9:14:c8:29"
                                 onChange={this.handleChange} value={this.state.deviceID} />
+                            </div>
+                            <div className="form-group">
+                                <input className="text" name="name" type="name" placeholder="Tomato Monitor"
+                                onChange={this.handleChange} value={this.state.name} />
                             </div>
                             <input className="btn button" type="submit" value="Let's Grow!" onClick={this.handleSubmit} />
                         </form>
