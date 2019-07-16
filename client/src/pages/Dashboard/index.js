@@ -5,6 +5,7 @@ import RegDevice from '../../components/RegDevice';
 import Device from '../../components/Device';
 import DeleteModal from '../../components/DeleteModal';
 import SensorModal from '../../components/SensorModal';
+import ControlModal from '../../components/ControlModal';
 
 import API from "../../utils/API";
 
@@ -83,6 +84,7 @@ class Dashboard extends Component {
                     </div>
                     <DeleteModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
                     <SensorModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
+                    <ControlModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
 
                 </div>
             </div>

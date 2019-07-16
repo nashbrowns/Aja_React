@@ -56,7 +56,7 @@ class Device extends Component {
                           <div className = "col-3">
 
                             <div className="hoverDiv">
-                                <btn className="btn btn-info m-1" del="18">
+                                <btn className="btn btn-info m-1" data-toggle="modal" data-target="#controllerModal">
                                 <i class="far fa-lightbulb"></i>
                                 </btn>
                                 <span className="hoverText">Add Controller</span>
