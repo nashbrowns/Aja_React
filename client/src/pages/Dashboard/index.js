@@ -3,6 +3,8 @@ import './style.css';
 
 import RegDevice from '../../components/RegDevice';
 import Device from '../../components/Device';
+import DeleteModal from '../../components/DeleteModal';
+import SensorModal from '../../components/SensorModal';
 
 import API from "../../utils/API";
 
@@ -14,7 +16,10 @@ class Dashboard extends Component {
         email: '',
         firstName: '',
         lastName: '',
-        deviceList: []
+        deviceList: [],
+        devID: '',
+        devMAC: '',
+        devName: ''
     }
 
     componentDidMount(){
@@ -48,25 +53,37 @@ class Dashboard extends Component {
                     email: user.data.email,
                     firstName: user.data.firstName,
                     lastName: user.data.lastName,
-                    deviceList: user.data.deviceList  
+                    deviceList: user.data.deviceList 
                 });
 
                 }).catch(err => console.log(err));
 
     }
 
+    passDeviceData(devData){
+        console.log(devData);
+        this.setState({
+            devID: devData.id,
+            devMAC: devData.MAC,
+            devName: devData.name
+        });
+    }
+
     render (){
         return (
             <div>
-                <RegDevice email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName} />
+                <RegDevice userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName} />
                 <div className="container">
                     <div className="row">
                         {
                             this.state.deviceList.map(item => {
-                                return (<Device id={item._id} MAC={item.MAC} name={item.name} />);
+                                return (<Device id={item._id} MAC={item.MAC} name={item.name} passDeviceData={this.passDeviceData} />);
                             })
                         }
                     </div>
+                    <DeleteModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
+                    <SensorModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
+
                 </div>
             </div>
         );
