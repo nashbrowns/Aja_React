@@ -85,7 +85,6 @@ class Dashboard extends Component {
                     <DeleteModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
                     <SensorModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
                     <ControlModal devName={this.state.devName} userID={this.props.userID} email={this.props.email} firstName={this.props.firstName} lastName={this.props.lastName}/>
-
                 </div>
             </div>
         );
